@@ -1,9 +1,11 @@
 {
   "dependencies": {
     "@tensorflow/tfjs": "^2.4.0",
+    "chart": "^0.1.2",
     "express": "^4.17.1",
     "mocha-jsdom": "^2.0.0",
     "mysql": "^2.18.1",
+    "push.js": "^1.0.12",
     "qs": "^6.9.4"
   }
 }

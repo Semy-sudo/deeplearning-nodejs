@@ -26,6 +26,7 @@ router.get('/',function(request,response){
               <meta charset="utf-8" />
               <meta name="viewport" content="width=device-width, initial-scale=1" />
               <link rel="stylesheet" href="assets/css/main.css" />
+              <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
           </head>
           <body class="subpage">
       
@@ -49,6 +50,7 @@ router.get('/',function(request,response){
                           <h3>계산결과!</h3>
       <h4>하루 권장 열량: ${queryData.kal} kcal</h4></br>
       <h4>하루 권장 급여량: ${queryData.gram} g</h4>
+      
                               
                              
           
@@ -63,12 +65,38 @@ router.get('/',function(request,response){
       
                       </div>
                   </footer>
+                  
       
              
                   <script src="assets/js/jquery.min.js"></script>
                   <script src="assets/js/skel.min.js"></script>
                   <script src="assets/js/util.js"></script>
                   <script src="assets/js/main.js"></script>
+                  <canvas id="myChart"></canvas>
+
+                  <canvas id="myChart"></canvas>
+
+                  <script>
+                  var ctx = document.getElementById('myChart').getContext('2d');
+                  var chart = new Chart(ctx, {
+                      
+                      type: 'line',
+                  
+                      
+                      data: {
+                          labels: ['monday', 'tuesday', 'wednesday', 'thursday', 'friday', 'saturday', 'sunday'],
+                          datasets: [{
+                              label: 'weight',
+                              //backgroundColor: 'rgb(255, 99, 132)',
+                              borderColor: 'rgb(255, 99, 132)',
+                              data: [0, 10, 5, 2, 20, 30, 45] //db 에서 가져와서 입력하기
+                          }]
+                      },
+                  
+                      
+                      options: {}
+                  });
+                  </script>
       
           </body>
       </html>`

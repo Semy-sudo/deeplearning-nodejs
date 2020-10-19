@@ -99,6 +99,7 @@ router.get('/',function(request,response){
         
         console.log("weight: ", weight);
         console.log("age:",age); //1~8까지 전달
+        
 
         var kal = ((30*weight)+70)*age; //하루 열량
         var gram = (kal*1000)/5000; //하루 급여량

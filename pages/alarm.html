@@ -1,0 +1,30 @@
+<html>
+<head>
+<script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
+</head>
+<body>
+<canvas id="myChart"></canvas>
+
+<script>
+var ctx = document.getElementById('myChart').getContext('2d');
+var chart = new Chart(ctx, {
+    // The type of chart we want to create
+    type: 'line',
+
+    // The data for our dataset
+    data: {
+        labels: ['monday', 'tuesday', 'wednesday', 'thursday', 'friday', 'saturday', 'sunday'],
+        datasets: [{
+            label: 'weight',
+            //backgroundColor: 'rgb(255, 99, 132)',
+            borderColor: 'rgb(255, 99, 132)',
+            data: [0, 10, 5, 2, 20, 30, 45] //db 에서 가져와서 입력하기
+        }]
+    },
+
+    // Configuration options go here
+    options: {}
+});
+</script>
+</body>
+</html>
