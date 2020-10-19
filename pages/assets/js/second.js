@@ -94,41 +94,22 @@ router.get('/',function(request,response){
   });
   
   router.post('/second_process',function(request,response){
-    var _url = request.url;
-    var queryData = url.parse(_url, true).query;
-    console.log(queryData.id);
-    var body = '';
-    //request 객체는 readablestream 인터페이스를 구현하고있다
-    //'data'와 'end'는 이벤트
-    //request 객체에 on 함수로 data 이벤트를 연결
-    request.on('data', function(data){
-        body = body + data;
-
-        // var post = qs.parse(body);
-       
-        // var weight = post.weight;//몸무게
-        // var age = post.age;//가중치
+        var weight = request.body.weight;//몸무게
+        var age = request.body.age;//가중치
         
-        // console.log("weight: ", weight);
-        // console.log("age:",age); //1~8까지 전달
+        console.log("weight: ", weight);
+        console.log("age:",age); //1~8까지 전달
 
-        // var kal = ((30*weight)+70)*age; //하루 열량
-        // var gram = (kal*1000)/5000; //하루 급여량
+        var kal = ((30*weight)+70)*age; //하루 열량
+        var gram = (kal*1000)/5000; //하루 급여량
        
-        //console.log(kal);
-        //console.log(gram);
-        response.sendRedirect(`/second_2?kal=${kal}&gram=${gram}`); //url 로 전달하기
+        console.log(kal);
+        console.log(gram);
+        response.redirect(`/second_2?kal=${kal}&gram=${gram}`); //url 로 전달하기
       
         
     });
 
-    request.on('end',function(){
-        var post = qs.parse(body);
-        console.log(post);
-    })
-  
-      
-
-  });
+   
 
   module.exports = router;

@@ -94,52 +94,42 @@ router.get('/',function(request,response){
   });
   
   router.post('/third_process',function(request,response){
-    var _url = request.url;
-    var queryData = url.parse(_url, true).query;
-    console.log(queryData.id);
-    var body = '';
-    //request 객체는 readablestream 인터페이스를 구현하고있다
-    //'data'와 'end'는 이벤트
-    //request 객체에 on 함수로 data 이벤트를 연결
-    var one = '';
-    var two = '';
-    request.on('data', function(data){
-        body = body + data;
-        var post = qs.parse(body);
-       
-        var weight = post.weight;//몸무게
-        var age = post.age;//과체중 비율
+    console.log(request.body);
+    console.log(request.body.weight);
+    console.log(request.body.age);
 
-        var kal = ((30*weight)+70)*8; //하루 열량
-        var gram = (kal*1000)/5000; //하루 급여량
+    var weight = request.body.weight;//몸무게
+    var age = request.body.age;//과체중 비율
+
+    var kal = ((30*weight)+70)*8; //하루 열량
+    var gram = (kal*1000)/5000; //하루 급여량
         
-        console.log("weight: ", weight);
-        console.log("age:",age); 
+    console.log("weight: ", weight);
+    console.log("age:",age); 
 
-        var goalkal = weight/age; //목표몸무게
+    var goalkal = weight/age; //목표몸무게
         
         
 
        
-        console.log(goalkal);
-        
-        response.redirect(`/third_2?goalkal=${goalkal}&kal=${kal}&gram=${gram}`); //url 로 전달하기
-      
-        
-    });
-  
-      
-    // request.on('end', function(){
-        
-        
-    // });
+    console.log(goalkal);
+
+    // var _url = request.url;
+    // var queryData = url.parse(_url, true).query;
+    // console.log(queryData.id);
+    // var body = '';
+
 
     
+        
+        
+    response.redirect(`/third_2?goalkal=${goalkal}&kal=${kal}&gram=${gram}`); //url 로 전달하기
+      
+        
    
-   
- 
   
-    //response.redirect(`/second_2`); //url 로 전달하기
+      
+
   });
 
   module.exports = router;
