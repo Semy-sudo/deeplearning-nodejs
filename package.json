@@ -5,7 +5,10 @@
     "express": "^4.17.1",
     "mocha-jsdom": "^2.0.0",
     "mysql": "^2.18.1",
+    "passport": "^0.4.1",
+    "passport-local": "^1.0.0",
     "push.js": "^1.0.12",
-    "qs": "^6.9.4"
+    "qs": "^6.9.4",
+    "session": "^0.1.0"
   }
 }

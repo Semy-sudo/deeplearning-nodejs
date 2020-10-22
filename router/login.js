@@ -5,22 +5,25 @@ const router = express.Router();
 const qs = require('querystring');
 
 
-router.post('/login',function(req,res){
-    var catname = req.body.catname;
-    var email = req.body.email;
-    db.query('select * from customer where catname=\'' + catname + '\' and email=\'' + email + '\'', function (err, rows, fields) {
-        if(!err){
-            if(rows[0]!=undefined){
-                res.redirect('/'); //메인화면으로 넘어가기
-            }else{
-                res.send('no data');
-            }
-        }else{
-            res.send('error: '+err);
-        }
-    });  
+// router.post('/login',function(req,res){
+//     var catname = req.body.catname;
+//     var email = req.body.email; //객체화 시켜야함
 
-});
+//     db.query('select * from customer where catname=\'' + catname + '\' and email=\'' + email + '\'', function (err, rows, fields) {
+//         if(!err){
+//             if(rows[0]!=undefined){
+//                 res.redirect('/'); //메인화면으로 넘어가기
+//             }else{
+//                 res.send('no data');
+//             }
+//         }else{
+//             res.send('error: '+err);
+//         }
+//     });  
+
+
+
+// });
 
 
 
@@ -33,6 +36,18 @@ router.post('/register',function(req,res){
   VALUES(?,?,?)
 `,
         [post.catname, post.email, post.phone],
+        function (error, result) {
+          if (error) {
+            throw error
+          }
+        }
+      )
+
+      db.query(
+        `INSERT INTO kalcalender (email)
+  VALUES(?)
+`,
+        [post.email],
         function (error, result) {
           if (error) {
             throw error

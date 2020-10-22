@@ -60,6 +60,10 @@ router.get('/',function(request,response){
                               <ul class="actions">
                                         <li><input value="돌아가기" class="button alt" type="submit"></li>
                                     </ul></a>
+                                    <a href="/weight_management">
+                                    <ul class="actions">
+                                              <li><input value="체중관리" class="button alt" type="submit"></li>
+                                          </ul></a>  
                          
                           
       
@@ -101,7 +105,7 @@ router.get('/',function(request,response){
           </body>
       </html>`
     
-
+    
     //response.writeHead(200);//서버가 정상 처리하여 응답한 경우
     response.send(html);
 
