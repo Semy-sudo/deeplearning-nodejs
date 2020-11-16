@@ -7,16 +7,27 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 const jsdom = require('mocha-jsdom');
 var url = require('url');
+const db = require('../../../lib/db');
 
 
 //second_2
 router.get('/',function(request,response){
+    console.log("user.email",request.user.email);
     var _url = request.url;
     var queryData = url.parse(_url, true).query;
     console.log(queryData.kal);
     console.log(queryData.gram);
-            
-         
+    var sqlQuery = "SELECT * FROM kalcalender Where email = ?";
+
+    function callback(err,rows,fields){
+        if(err){
+            throw err
+        }
+        console.log(rows.monday);
+    }
+
+    db.query(sqlQuery,[request.user],callback);
+
     var html = 
       `<!DOCTYPE HTML>
 
@@ -109,7 +120,7 @@ router.get('/',function(request,response){
     //response.writeHead(200);//서버가 정상 처리하여 응답한 경우
     response.send(html);
 
-  
+    
 });
 
 module.exports = router;

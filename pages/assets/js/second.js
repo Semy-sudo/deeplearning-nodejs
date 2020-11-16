@@ -12,7 +12,8 @@ const db = require('../../../lib/db');
 //localhost:8080/second
 //second라고 쳤을때
 router.get('/',function(request,response){
-
+  console.log(request.user.email);
+  console.log(request.user);
             
          
           var html = 
@@ -116,6 +117,10 @@ router.get('/',function(request,response){
         console.log("weight: ", weight);
         console.log("age:",age); //1~8까지 전달
         console.log("day:",day); //월~금
+        console.log("/",request.user);
+        console.log("/",request.id);
+        console.log("/",request.session);
+        //console.log(request);
 
         var kal = ((30*weight)+70)*age; //하루 열량
         var gram = (kal*1000)/5000; //하루 급여량
@@ -136,7 +141,6 @@ router.get('/',function(request,response){
         
         console.log(kal);
         console.log(gram);
-        console.log(request.user.email);
         response.redirect(`/second_2?kal=${kal}&gram=${gram}`); //url 로 전달하기
       
         
