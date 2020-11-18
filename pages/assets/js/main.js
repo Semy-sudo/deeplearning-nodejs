@@ -57,7 +57,7 @@
 				});
 
 		// Fix: Remove transitions on WP<10 (poor/buggy performance).
-			if (skel.vars.os == 'wp' && skel.vars.osVersion < 10)
+			if (skel.vars.os == 'wp' && skel.vars.osVersion < 1)
 				$('#navPanel')
 					.css('transition', 'none');
 

@@ -1,21 +1,23 @@
 var express = require('express');
-var router = express.Router();
+const passport = require('passport');
+var router = express.Router(passport);
 var qs = require("querystring");
 const bodyParser = require('body-parser');
-const app = express();
+const app = express(passport);
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 const jsdom = require('mocha-jsdom');
 var url = require('url');
 const db = require('../../../lib/db');
+//const login = require('../../../router/login');
+
 
 //localhost:8080/second
 //second라고 쳤을때
-router.get('/',function(request,response){
-  console.log(request.user.email);
-  console.log(request.user);
-            
-         
+  router.route('/').get(
+    function(request,response){
+   
+ 
           var html = 
             `<!DOCTYPE HTML>
 
@@ -106,11 +108,11 @@ router.get('/',function(request,response){
   
           //response.writeHead(200);//서버가 정상 처리하여 응답한 경우
           response.send(html);
-      
-        
+          
   });
-  
+
   router.post('/second_process',function(request,response){
+       
         var weight = request.body.weight;//몸무게
         var age = request.body.age;//가중치
         var day = request.body.day;//요일
@@ -134,6 +136,7 @@ router.get('/',function(request,response){
               if (error) {
                 throw error
               }
+              
             }
           )
         

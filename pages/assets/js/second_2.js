@@ -12,7 +12,7 @@ const db = require('../../../lib/db');
 
 //second_2
 router.get('/',function(request,response){
-    console.log("user.email",request.user.email);
+    
     var _url = request.url;
     var queryData = url.parse(_url, true).query;
     console.log(queryData.kal);
@@ -27,6 +27,9 @@ router.get('/',function(request,response){
     }
 
     db.query(sqlQuery,[request.user],callback);
+    db.query('SELECT * from kalcalender Where email = ?',['egoing777@gmail.com'], function(err,rows,fields){
+        console.log(rows);
+    
 
     var html = 
       `<!DOCTYPE HTML>
@@ -104,7 +107,7 @@ router.get('/',function(request,response){
                               label: 'weight',
                               //backgroundColor: 'rgb(255, 99, 132)',
                               borderColor: 'rgb(255, 99, 132)',
-                              data: [0, 10, 5, 2, 20, 30, 45] //db 에서 가져와서 입력하기
+                              data: [${rows[0].monday}, ${rows[0].tuesday}, ${rows[0].wednesday}, ${rows[0].thursday}, ${rows[0].friday}, ${rows[0].saturday}, ${rows[0].sunday}] //db 에서 가져와서 입력하기
                           }]
                       },
                   
@@ -119,7 +122,7 @@ router.get('/',function(request,response){
     
     //response.writeHead(200);//서버가 정상 처리하여 응답한 경우
     response.send(html);
-
+})
     
 });
 
