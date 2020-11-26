@@ -15,32 +15,15 @@ router.get('/fat.html',function(request,response){ //요청을 받으면
     response.sendFile(path.join(__dirname+'/fat.html')); //이렇게 응답해준다
 });
 
-//종분류 
-router.get('/my_model/model.json',function(request,response){ //요청을 받으면
-    response.sendFile(path.join(__dirname+'/my_model/model.json')); //이렇게 응답해준다
-});
-router.get('/my_model/metadata.json',function(request,response){ //요청을 받으면
-    response.sendFile(path.join(__dirname+'/my_model/metadata.json')); //이렇게 응답해준다
-});
-router.get('/my_model/weights.bin',function(request,response){ //요청을 받으면
-    response.sendFile(path.join(__dirname+'/my_model/weights.bin')); //이렇게 응답해준다
-});
 
-//감정분류
-router.get('/my_model_1/model.json',function(request,response){ //요청을 받으면
-    response.sendFile(path.join(__dirname+'/my_model_1/model.json')); //이렇게 응답해준다
-});
-router.get('/my_model_1/metadata.json',function(request,response){ //요청을 받으면
-    response.sendFile(path.join(__dirname+'/my_model_1/metadata.json')); //이렇게 응답해준다
-});
-router.get('/my_model_1/weights.bin',function(request,response){ //요청을 받으면
-    response.sendFile(path.join(__dirname+'/my_model_1/weights.bin')); //이렇게 응답해준다
-});
 
 
 // app.get('/cnn.html',function(request,response){ //요청을 받으면
 //     response.sendFile(path.join(__dirname+'/pages/cnn.html')); //이렇게 응답해준다
 // });
+router.get('/my_model/model.json',function(request,response){
+    response.sendFile(path.join(__dirname+'/my_model/model.json')); 
+});
 
 //////파일 로드하기
 router.get('/dataset/Bengal/3.jpg',function(request,response){
